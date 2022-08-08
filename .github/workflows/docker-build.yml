@@ -32,8 +32,8 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
-          username: ${{ DOCKER_USERNAME }}
-          password: ${{ DOCKER_TOKEN }}
+          username: ${{ environment.DOCKER_USERNAME }}
+          password: ${{ environment.DOCKER_TOKEN }}
       -
         name: Build and push
         uses: docker/build-push-action@v2
@@ -42,4 +42,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ DOCKER_USERNAME }}/python-helloworld:latest
+          tags: ${{ environment.DOCKER_USERNAME }}/python-helloworld:latest
